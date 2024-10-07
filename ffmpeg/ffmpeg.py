@@ -177,6 +177,8 @@ class FFmpeg(EventEmitter):
             stderr=subprocess.PIPE,
         )
 
+        self.emit("started", self._process)
+
         with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
             self._executed = True
             futures = [
